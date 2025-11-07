@@ -5,6 +5,7 @@ from tkinter import *
 window = Tk()
 window.title("BMI Calculator")
 window.minsize(400,400)
+window.config(padx=10, pady=10)
 
 
 def calculate_bmi():
@@ -19,7 +20,7 @@ def calculate_bmi():
         bmi_angle = 6 * (bmi_resulth-10)
         x2 = 150 + (120 * math.cos(math.radians(bmi_angle)))
         y2 = 140 - (120 * math.sin(math.radians(bmi_angle)))
-        line = canvas.create_line(150, 140, x2, y2, width=3, fill="black", tags="needle")
+        line = canvas.create_line(150, 140, x2, y2, width=3, fill="black", tags="needle", arrow= "last")
 
         if bmi_resulth < 14.0:
             category_str = "You are Very Weak person 😮"
@@ -62,6 +63,14 @@ canvas.create_arc(20,10, 280, 270, start=36, extent=36, style="arc", outline="or
 canvas.create_arc(20,10, 280, 270, start=72, extent=36, style="arc", outline="green", width=10)
 canvas.create_arc(20,10, 280, 270, start=108, extent=36, style="arc", outline="orange", width=10)
 canvas.create_arc(20,10, 280, 270, start=144, extent=36, style="arc", outline="red", width=10)
+
+
+canvas.create_text(150, 35, text="Normal")
+canvas.create_text(212, 55, text="Underweight")
+canvas.create_text(88, 55, text="Overweight")
+canvas.create_text(250, 108, text="Severely Underweight")
+canvas.create_text(50, 108, text="Obese")
+
 canvas.pack()
 
 window.mainloop()
